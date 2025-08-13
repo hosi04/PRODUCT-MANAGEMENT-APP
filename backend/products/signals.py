@@ -2,7 +2,8 @@ from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
 from .models import Product
 from .documents import ProductDocument
-
+from elasticsearch_dsl.connections import connections
+from django.conf import settings
 @receiver(post_save, sender=Product)
 def index_product(sender, instance, **kwargs):
     """

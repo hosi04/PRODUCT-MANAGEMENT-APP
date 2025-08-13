@@ -58,14 +58,39 @@ const AdminPage = () => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     if (editingId) {
+  //       await axios.put(`http://localhost:8000/api/products/${editingId}/`, form);
+  //       toast.success("Cập nhật sản phẩm thành công!");
+  //     } else {
+  //       await axios.post("http://localhost:8000/api/products/", form);
+  //       toast.success("Thêm sản phẩm thành công!");
+  //     }
+  //     fetchProducts();
+  //     closeModal();
+  //   } catch (error) {
+  //     console.error(error);
+  //     toast.error("Lỗi khi lưu sản phẩm");
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Chuyển đổi kiểu dữ liệu trước khi gửi
+      const dataToSend = {
+        ...form,
+        price: parseFloat(form.price),
+        stock: parseInt(form.stock, 10),
+      };
+
       if (editingId) {
-        await axios.put(`http://localhost:8000/api/products/${editingId}/`, form);
+        await axios.put(`http://localhost:8000/api/products/${editingId}/`, dataToSend);
         toast.success("Cập nhật sản phẩm thành công!");
       } else {
-        await axios.post("http://localhost:8000/api/products/", form);
+        await axios.post("http://localhost:8000/api/products/", dataToSend);
         toast.success("Thêm sản phẩm thành công!");
       }
       fetchProducts();

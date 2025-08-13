@@ -4,9 +4,8 @@ from rest_framework.response import Response
 from elasticsearch_dsl import Q
 from .models import Product
 from .serializers import ProductSerializer
-from .documents import ProductDocument  # file này bạn sẽ tạo ở bước mapping
+from .documents import ProductDocument
 from elasticsearch_dsl import connections
-from rest_framework.permissions import AllowAny
 from rest_framework.views import APIView
 
 # ============================================DB
@@ -18,12 +17,8 @@ class ProductViewSet(viewsets.ModelViewSet):
 class ProductListView(APIView):
 
     def get(self, request):
-
         connections.create_connection(alias='default', hosts=['http://elasticsearch:9200'])
-
-        search = ProductDocument.search().sort('id')[:1000]  # Lấy 20 sản phẩm đầu
-        # search = ProductDocument.search()[:1000]
-
+        search = ProductDocument.search().sort('id')[:1000]
         results = search.execute()
 
         data = [
@@ -44,9 +39,6 @@ class ProductListView(APIView):
 
 
 class ProductSearchView(APIView):
-    """
-    Search sản phẩm trong Elasticsearch
-    """
     def get(self, request):
         connections.create_connection(alias='default', hosts=['http://elasticsearch:9200'])         
 
