@@ -1,0 +1,13 @@
+{
+  "name": "elasticsearch-products-sink",
+  "config": {
+    "connector.class": "io.confluent.connect.elasticsearch.ElasticsearchSinkConnector",
+    "topics": "product_cdc.product_management.product",
+    "connection.url": "http://elasticsearch:9200",
+    "key.ignore": "true",
+    "schema.ignore": "true",
+    "type.name": "_doc",
+    "read.timeout.ms": "30000",
+    "batch.size": "100"
+  }
+}

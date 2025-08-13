@@ -1,0 +1,20 @@
+{
+  "name": "mysql-products-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+    "database.hostname": "db", 
+    "database.port": "3306",
+    "database.user": "admin",
+    "database.password": "admin",
+    "database.server.id": "184054",
+    "database.server.name": "mysql-product-server",
+    "topic.prefix": "product_cdc",
+    "database.include.list": "product_management",
+    "table.include.list": "product_management.product",
+    "include.schema.changes": "true",
+    
+    "schema.history.internal.kafka.bootstrap.servers": "kafka:9092",
+    "schema.history.internal.kafka.topic": "schema-changes.product",
+    "schema.history.internal.store.only.captured.tables.ddl": "true"
+  }
+}

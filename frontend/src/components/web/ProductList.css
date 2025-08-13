@@ -1,0 +1,177 @@
+/* .product-container {
+    padding: 40px;
+    background-color: #ffffff;
+    min-height: 100vh;
+} */
+
+.product-container {
+  padding: 40px;
+  background-color: #ffffff;
+  min-height: 100vh;
+  max-width: 1200px;  /* Giới hạn chiều rộng tối đa */
+  margin: 0 auto;     /* Căn giữa container */
+  box-sizing: border-box; /* Đảm bảo padding không làm tràn */
+}
+
+.product-title {
+    font-size: 28px;
+    font-weight: bold;
+    color: #2E7D32;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* Luôn 4 cột ở desktop */
+    gap: 25px;
+}
+
+@media (max-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr); /* Tablet lớn */
+    }
+}
+
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* Tablet nhỏ */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* Mobile */
+    }
+}
+
+.product-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.product-image-container {
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 10px;
+}
+
+.product-image {
+    max-width: 100%;
+    max-height: 250px;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.product-info {
+    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+    min-height: 40px;
+}
+
+.product-price-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e53935;
+}
+
+.product-old-price {
+    font-size: 14px;
+    color: #888;
+    text-decoration: line-through;
+}
+
+.product-discount {
+    background-color: #ff9800;
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.button-box {
+    display: flex;
+    gap: 10px;
+    margin-top: auto;
+}
+
+.btn-cart {
+    flex: 1;
+    background-color: #2E7D32;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-buy {
+    flex: 1;
+    background-color: #ff5722;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+.suggestions-list {
+  position: absolute;
+  background: white;
+  border: 1px solid #ddd;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 2px;
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+}
+
+.suggestion-item {
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f0f0;
+}
+

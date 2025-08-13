@@ -1,0 +1,77 @@
+docker-compose exec backend python manage.py makemigrations products
+docker-compose exec backend python manage.py migrate
+
+
+docker-compose exec backend python manage.py makemigrations accounts
+docker-compose exec backend python manage.py migrate
+
+
+django:
+root
+root
+
+====================Curl Debezium=============================
+== Lệnh curl này không kết nối trực tiếp tới MySQL. Nó gửi yêu cầu tới Kafka Connect để 
+== bảo Kafka Connect dùng Debezium mà kết nối vào MySQL, rồi stream dữ liệu thay đổi vào Kafka topic.
+curl -i -X POST http://localhost:8083/connectors \
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -d @register-mysql-cdc.json
+
+
+====================Curl Elastic Search=============================
+curl -i -X POST http://localhost:8083/connectors \
+  -H "Accept: application/json" \
+  -H "Content-Type: application/json" \
+  -d @register-elasticsearch-sink.json
+
+
+- Muon call duoc api get data tu ES thi phai
+  + Indexing
+  + Push data tu mysql -> ES
+
+
+  npm install react-toastify
+
+
+====================+PRODUCT NAME=============================
+La Roche-Posay Effaclar Duo+
+
+Some By Mi AHA-BHA-PHA 30 Days Miracle Toner
+
+Vichy Mineral 89 Serum
+
+Skin1004 Madagascar Centella Ampoule
+
+Bioderma Sensibio H2O Micellar Water
+
+Naruko Tea Tree Shine Control & Blemish Clear Mask
+
+Innisfree Green Tea Seed Serum
+
+L'Oréal Paris UV Defender Sunscreen SPF50+
+
+Maybelline Fit Me Matte + Poreless Foundation
+
+Romand Zero Velvet Tint (Ver. New)
+
+====================CATEGORY NAME=============================
+Sữa rửa mặt
+
+Toner/Nước hoa hồng
+
+Serum/Ampoule
+
+Kem dưỡng ẩm
+
+Kem chống nắng
+
+Tẩy trang
+
+Mặt nạ dưỡng da
+
+Trang điểm nền (kem nền, cushion)
+
+Son môi
+
+Chăm sóc tóc (dầu gội, dầu xả)
