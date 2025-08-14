@@ -10,7 +10,7 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        db_table = 'product' # <-- Thêm dòng này
+        db_table = 'product' # This is name of table
 
     def __str__(self):
         return self.name
