@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from elasticsearch_dsl import Q
 from .models import Product
@@ -7,10 +8,12 @@ from .documents import ProductDocument
 from elasticsearch_dsl import connections
 from rest_framework.views import APIView
 
+# ============================================DB
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
 
+# ============================================ES
 class ProductListView(APIView):
 
     def get(self, request):
@@ -38,6 +41,7 @@ class ProductListView(APIView):
 class ProductSearchView(APIView):
     def get(self, request):
         connections.create_connection(alias='default', hosts=['http://elasticsearch:9200'])         
+
         query = request.GET.get('q', '')
         search = ProductDocument.search()
 
